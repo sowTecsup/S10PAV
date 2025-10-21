@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -7,7 +8,11 @@ public class GameManager : MonoBehaviour
     public PlayerController playerController;
     public UIManager uiManager;
     [Header("References")]
-    [SerializeField] private int score;   
+    [SerializeField] public int score;
+
+
+
+    public Action OnAddScore;
 
     void Start()
     {
@@ -22,5 +27,6 @@ public class GameManager : MonoBehaviour
     public void AddScore()
     {
         score++;
+        OnAddScore?.Invoke();
     }
 }
